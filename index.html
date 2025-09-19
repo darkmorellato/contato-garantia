@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garantia de Celulares</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .contact-card {
+            transition: all 0.3s ease;
+        }
+        .whatsapp-link {
+            transition: all 0.3s ease;
+        }
+        .whatsapp-link:hover {
+            transform: scale(1.02);
+            color: #059669; /* Tom de verde mais escuro no hover */
+        }
+    </style>
+</head>
+<body class="bg-[#DDD9CE] flex items-center justify-center min-h-screen p-4">
+
+<div class="bg-[#F2F2EB] p-8 rounded-2xl shadow-2xl max-w-2xl w-full">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Contatos de Garantia de Celulares</h1>
+    <p class="text-gray-600 text-center mb-8">Clique no número de telefone para iniciar uma conversa no WhatsApp.</p>
+
+    <div id="contact-list" class="space-y-6">
+        <!-- Conteúdo gerado dinamicamente via JS -->
+    </div>
+</div>
+
+<script>
+    const contacts = [
+        {
+            brand: 'Honor',
+            contact: '+551191317-5144',
+            description: 'Suporte para garantia e assistência técnica da Honor.',
+            additionalInfo: 'Lovatech - Magictech',
+            imageUrl: 'honor.jpg',
+            contactImageUrl: 'zap.jpg'
+        },
+        {
+            brand: 'Realme',
+            contact: '+5511957228196', 
+            description: 'Suporte para garantia e assistência técnica da Realme.',
+            imageUrl: 'realme.jpg',
+            contactImageUrl: 'zap.jpg'
+        },
+        {
+            brand: 'Samsung',
+            contact: '+551132303262',
+            description: 'Suporte para garantia e assistência técnica da Samsung.',
+            additionalInfo: 'Piracicaba - Loja do Shopping<br>Amparo - Não temos conhecimento',
+            imageUrl: 'samsung.jpg',
+            contactImageUrl: 'zap.jpg'
+        },
+        {
+            brand: 'Motorola',
+            contact: '+5519983630058',
+            description: 'Suporte para garantia e assistência técnica da Motorola.',
+            imageUrl: 'moto.jpg',
+            contactImageUrl: 'zap.jpg'
+        },
+        {
+            brand: 'Apple',
+            contact: '+5508007610867',
+            description: 'Suporte para iPhones e outros dispositivos Apple.',
+            imageUrl: 'apple.jpg',
+            contactImageUrl: 'zap.jpg'
+        },
+        {
+            brand: 'Oppo',
+            contact: '+5511996388830',
+            description: 'Suporte para garantia e assistência técnica da Oppo.',
+            additionalInfo: 'Lovatech',
+            imageUrl: 'oppo.jpg',
+            contactImageUrl: 'zap.jpg'
+        }
+    ];
+
+    const contactList = document.getElementById('contact-list');
+
+    contacts.forEach(item => {
+        const contactDiv = document.createElement('div');
+        contactDiv.className = 'contact-card bg-white p-6 rounded-2xl shadow-md';
+        contactDiv.innerHTML = `
+            <div class="flex items-start mb-4">
+                <img src="${item.imageUrl}" alt="Logo da marca ${item.brand}" class="w-10 h-10 rounded-full flex-shrink-0 mr-4">
+                <div>
+                    <h2 class="text-xl font-bold text-gray-800">${item.brand}</h2>
+                    <p class="mt-1 text-gray-500">${item.description}</p>
+                    ${item.additionalInfo ? `<p class="mt-1 text-gray-400 text-sm">${item.additionalInfo}</p>` : ''}
+                </div>
+            </div>
+            <div class="mt-4 flex items-center justify-end">
+                <a href="https://wa.me/${item.contact.replace(/\D/g, '')}" target="_blank" class="whatsapp-link flex items-center text-xl font-bold text-green-600">
+                    <img src="${item.contactImageUrl}" alt="Ícone de Contato" class="w-6 h-6 rounded-full mr-2">
+                    ${item.contact}
+                </a>
+            </div>
+        `;
+        contactList.appendChild(contactDiv);
+    });
+</script>
+
+</body>
+</html>
